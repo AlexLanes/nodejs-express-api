@@ -1,9 +1,7 @@
 
-
-export default async (app) => {
-    app.get( '/api/password', getPassword )
-} 
-
-function getPassword(req, res) {
-    res.send('Hello World!')
+export function configure(app) {
+    app.get('/api/password', getPassword)
+}
+export function getPassword(request, response) {
+    response.send('Hello World!')
 }

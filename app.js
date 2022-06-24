@@ -4,9 +4,8 @@ import 'dotenv/config'
 const app = express()
 app.use( express.json() )
 
-
-import DefaultExports from './routes/getPassword.js'
-DefaultExports(app)
+import {configure} from './routes/getPassword.js'
+configure(app)
 
 const port = process.env.PORT
 app.listen(port, () => {
