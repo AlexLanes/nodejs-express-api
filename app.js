@@ -1,9 +1,9 @@
 "use strict"
 
 // Dependencys
-  import express from 'express' // main express
-  import 'dotenv/config'        // .env dependency
-  import path from 'path';      // path module
+  import express from 'express'   // main express
+  import 'dotenv/config'          // .env dependency
+  import path from 'path';        // path module
 
 const __dirname = path.resolve().replaceAll('\\', '/') // app.js directory
 
