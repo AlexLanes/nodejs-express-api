@@ -18,16 +18,25 @@ const SQL =
     })
 
 try{
+    /* await SQL`DROP TABLE users` */
     await SQL`
         CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            username VARCHAR(60) UNIQUE NOT NULL,
-            password VARCHAR(60) NOT NULL,
-            token VARCHAR(60) UNIQUE NOT NULL
+            id VARCHAR(255) PRIMARY KEY UNIQUE,
+            username VARCHAR(255) UNIQUE NOT NULL,
+            masterpassword VARCHAR(255) NOT NULL,
+            accesstoken VARCHAR(512) UNIQUE NOT NULL
+        )`
+    await SQL`
+        CREATE TABLE IF NOT EXISTS safe (
+            fk_user VARCHAR(255) NOT NULL,
+            id VARCHAR(255) PRIMARY KEY UNIQUE,
+            description VARCHAR(255) NOT NULL,
+            username VARCHAR(255) NOT NULL,
+            password VARCHAR(255) NOT NULL
         )`
 
 } catch(e){
-  console.log(`Database creation resulted in erro: ${e}`)
+  console.error(`##### Database creation resulted in erro: ${e} #####`)
 }
 
 export default SQL
