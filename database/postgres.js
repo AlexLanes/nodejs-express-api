@@ -106,3 +106,15 @@ export async function patchSafe(id, description, username, password) {
       throw(e)
     }
 }
+
+export async function deleteSafe(id) {
+    try {
+      return await sql`
+        DELETE FROM safe
+        WHERE id = ${id}
+      `
+    } catch(e) {
+      console.error(`##### Database deleteSafe resulted in error: ${e} #####`)
+      throw(e)
+    }
+}

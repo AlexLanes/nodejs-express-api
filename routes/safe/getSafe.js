@@ -10,7 +10,7 @@ import Utf8       from 'crypto-js/enc-utf8.js'
 // Globals
 const PORT     = process.env.PORT
 const RESOURCE = process.env.SAFE_RESOURCE
-const AES_SALT      = process.env.AES_SALT
+const AES_SALT = process.env.AES_SALT
 
 export function configure(app) {
     app.get(RESOURCE, existsAuth, validAuth, getUserSafe)
