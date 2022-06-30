@@ -65,12 +65,25 @@ export async function createSafe(fk_user, id, description, username, password) {
     }
 }
 
-export async function getSafe(user_id) {
+export async function getUserSafe(user_id) {
     try {
       return await sql`
-        SELECT * 
+        SELECT id, description
         FROM safe 
         WHERE fk_user = ${user_id}
+      `
+    } catch(e) {
+      console.error(`##### Database getSafe resulted in error: ${e} #####`)
+      throw(e)
+    }
+}
+
+export async function getSafeID(id) {
+    try {
+      return await sql`
+        SELECT *
+        FROM safe 
+        WHERE id = ${id}
       `
     } catch(e) {
       console.error(`##### Database getSafe resulted in error: ${e} #####`)
