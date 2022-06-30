@@ -40,3 +40,26 @@ export function postSafeSchema(request, response, next) {
 // Next
     next()
 }
+
+export function patchSafeSchema(request, response, next) {
+// Schema
+    let type = {
+        type: "string",
+        pattern: "^.{1,255}$"
+    }
+    let schema = {
+        type: "object",
+        properties: {
+            description: type,
+            username:    type,
+            password:    type
+        },
+        additionalProperties: false,
+    }
+// Validation
+    let validate = ajv.compile(schema)
+    if (!validate(request.body))
+        return response.status(400).json(validationErrorMessage(schema, validate.errors[0]))
+// Next
+    next()
+}

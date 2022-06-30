@@ -90,3 +90,19 @@ export async function getSafeID(id) {
       throw(e)
     }
 }
+
+export async function patchSafe(id, description, username, password) {
+    try {
+      return await sql`
+        UPDATE safe
+        SET
+          description = ${description},
+          username    = ${username}   ,
+          password    = ${password}
+        WHERE id = ${id}
+      `
+    } catch(e) {
+      console.error(`##### Database getSafe resulted in error: ${e} #####`)
+      throw(e)
+    }
+}
